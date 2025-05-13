@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolusiEtam - Layanan Profesional untuk Kebutuhan Anda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.95) 0%, rgba(5, 150, 105, 0.95) 100%);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link:hover {
+            color: #10b981;
+        }
+        
+        .btn-primary {
+            background-color: #10b981;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            border: 2px solid #10b981;
+            color: #10b981;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.05);
+        }
+
+        /* Slider Styles */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            touch-action: pan-y;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background-color: white;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .slider-arrow:hover {
+            background-color: white;
+        }
+
+        .slider-arrow.left {
+            left: 15px;
+        }
+
+        .slider-arrow.right {
+            right: 15px;
+        }
+
+        .slider-arrow i {
+            color: #10b981;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/6285389571637?text=Halo%20Solusietam,%20saya%20ingin%20konsultasi%20tentang%20layanan%20anda" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+                    <i class="fas fa-leaf text-white text-xl"></i>
+                </div>
+                <a href="#" class="text-2xl font-bold text-green-600">Solusi<span class="text-gray-800">Etam</span></a>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-700 font-medium hover:text-green-500">Home</a>
+                <a href="#services" class="nav-link text-gray-700 font-medium hover:text-green-500">Layanan</a>
+                <a href="#about" class="nav-link text-gray-700 font-medium hover:text-green-500">Tentang Kami</a>
+                <a href="#testimonials" class="nav-link text-gray-700 font-medium hover:text-green-500">Testimoni</a>
+                <a href="#contact" class="nav-link text-gray-700 font-medium hover:text-green-500">Kontak</a>
+            </nav>
+            
+            <div class="hidden md:block">
+                <a href="https://wa.me/6281234567890?text=Halo%20GreenSolution,%20saya%20ingin%20konsultasi%20tentang%20layanan%20anda" class="btn-primary px-6 py-2 rounded-full text-white font-medium" target="_blank">
+                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                </a>
+            </div>
+            
+            <button class="md:hidden text-gray-700 focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-md" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link text-gray-700 font-medium hover:text-green-500">Home</a>
+                <a href="#services" class="nav-link text-gray-700 font-medium hover:text-green-500">Layanan</a>
+                <a href="#about" class="nav-link text-gray-700 font-medium hover:text-green-500">Tentang Kami</a>
+                <a href="#testimonials" class="nav-link text-gray-700 font-medium hover:text-green-500">Testimoni</a>
+                <a href="#contact" class="nav-link text-gray-700 font-medium hover:text-green-500">Kontak</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20GreenSolution,%20saya%20ingin%20konsultasi%20tentang%20layanan%20anda" class="btn-primary px-6 py-2 rounded-full text-white font-medium text-center" target="_blank">
+                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">amun etam handek pitis, maka harus mau disuruh</h1>
+                <p class="text-lg mb-8 opacity-90">Kami menyediakan berbagai layanan profesional mulai dari perawatan AC, Instalasi Listrik,konsultasi IT, desain grafis hingga branding untuk UMKM Anda dengan kualitas terbaik.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#services" class="btn-outline border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 rounded-full font-medium text-center">Lihat Layanan</a>
+                    <a href="https://wa.me/6281234567890?text=Halo%20GreenSolution,%20saya%20ingin%20konsultasi%20tentang%20layanan%20anda" class="btn-primary px-8 py-3 rounded-full font-medium text-center" target="_blank">
+                        <i class="fab fa-whatsapp mr-2"></i> Hubungi Kami
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="slider-container">
+                    <div class="slider" id="slider">
+                        <div class="slide">
+                            <img src="aircon.png" style="width: 100%; height: auto; object-fit: cover; display: block;" alt="Professional Services 1">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Professional Services 3">
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Professional Services 4">
+                        </div>
+                    </div>
+                    <div class="slider-nav" id="slider-nav"></div>
+                    <div class="slider-arrow left" id="prev-slide">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="slider-arrow right" id="next-slide">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Layanan Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami menyediakan berbagai layanan profesional untuk memenuhi kebutuhan bisnis dan rumah Anda.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1: Bersih AC -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-wind text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Bersih AC Profesional & Instalasi Listrik</h3>
+                    <p class="text-gray-600 mb-4">Layanan pembersihan dan perawatan AC & Instalasi Listrik untuk rumah serta kantor Anda dengan teknisi berpengalaman.</p>
+                    <div class="flex justify-between items-center">
+                        <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20layanan%20Bersih%20AC%20Profesional" class="text-green-600 font-medium flex items-center" target="_blank">
+                            <i class="fab fa-whatsapp mr-2"></i> Konsultasi
+                        </a>
+                        <span class="text-green-600 font-medium">Mulai Rp100rb</span>
+                    </div>
+                </div>
+                
+                <!-- Service 2: IT Consultant -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Konsultasi IT</h3>
+                    <p class="text-gray-600 mb-4">Solusi teknologi informasi untuk bisnis Anda, mulai dari infrastruktur hingga pengembangan sistem.</p>
+                    <div class="flex justify-between items-center">
+                        <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20layanan%20Konsultasi%20IT" class="text-green-600 font-medium flex items-center" target="_blank">
+                            <i class="fab fa-whatsapp mr-2"></i> Konsultasi
+                        </a>
+                        <span class="text-green-600 font-medium">Mulai Rp100rb</span>
+                    </div>
+                </div>
+                
+                <!-- Service 3: Desain Grafis -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-palette text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Desain Grafis</h3>
+                    <p class="text-gray-600 mb-4">Kreasi visual profesional untuk kebutuhan branding, marketing, dan komunikasi bisnis Anda.</p>
+                    <div class="flex justify-between items-center">
+                        <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20layanan%20Desain%20Grafis" class="text-green-600 font-medium flex items-center" target="_blank">
+                            <i class="fab fa-whatsapp mr-2"></i> Konsultasi
+                        </a>
+                        <span class="text-green-600 font-medium">Mulai Rp100rb</span>
+                    </div>
+                </div>
+                
+                <!-- Service 4: Branding UMKM -->
+                <div class="service-card bg-white rounded-xl p-6 shadow-md transition-all duration-300">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-store text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Branding UMKM</h3>
+                    <p class="text-gray-600 mb-4">Pengembangan identitas merek untuk usaha kecil dan menengah agar lebih profesional dan kompetitif.</p>
+                    <div class="flex justify-between items-center">
+                        <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20layanan%20Branding%20UMKM" class="text-green-600 font-medium flex items-center" target="_blank">
+                            <i class="fab fa-whatsapp mr-2"></i> Konsultasi
+                        </a>
+                        <span class="text-green-600 font-medium">Mulai Rp100rb</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="About Us" class="rounded-lg shadow-lg w-full">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Tentang SolusiEtam</h2>
+                <p class="text-gray-600 mb-6">SolusiEtam adalah penyedia layanan profesional yang berkomitmen untuk memberikan solusi terbaik bagi kebutuhan rumah dan bisnis Anda. Dengan tim yang berpengalaman dan berdedikasi, kami hadir untuk memastikan kepuasan pelanggan adalah prioritas utama kami.</p>
+                
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                        </div>
+                        <p class="ml-3 text-gray-700">Tim profesional dengan sertifikasi dan pengalaman luas</p>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                        </div>
+                        <p class="ml-3 text-gray-700">Harga kompetitif dengan kualitas terjamin</p>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                        </div>
+                        <p class="ml-3 text-gray-700">Garansi untuk semua layanan yang kami berikan</p>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                        </div>
+                        <p class="ml-3 text-gray-700">Pelayanan cepat dan responsif</p>
+                    </div>
+                </div>
+                
+                <a href="https://wa.me/6285389571637?text=Halo%20GreenSolution,%20saya%20ingin%20konsultasi%20tentang%20layanan%20anda" class="btn-primary px-8 py-3 rounded-full font-medium inline-block" target="_blank">
+                    <i class="fab fa-whatsapp mr-2"></i> Hubungi Kami
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-green-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Mengapa Memilih Kami?</h2>
+                <p class="max-w-2xl mx-auto opacity-90">Kami memberikan yang terbaik untuk memastikan kepuasan pelanggan</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-award text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Kualitas Terbaik</h3>
+                    <p class="opacity-90">Kami hanya menggunakan material dan metode terbaik untuk setiap layanan yang kami berikan.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-user-tie text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Profesional</h3>
+                    <p class="opacity-90">Tim kami terdiri dari profesional yang berpengalaman dan bersertifikat di bidangnya masing-masing.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-headset text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Pelayanan 24/7</h3>
+                    <p class="opacity-90">Kami siap membantu Anda kapan saja dengan layanan customer service yang responsif.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Apa Kata Klien Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Testimoni dari klien yang telah menggunakan layanan kami</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Budi Santoso</h4>
+                            <p class="text-gray-500 text-sm">Pemilik Restoran</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Layanan bersih AC dari Solusietam sangat memuaskan. Teknisinya profesional dan hasilnya AC serta instalasi listriknya di restoran saya menjadi lebih dingin dengan konsumsi listrik yang lebih efisien."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Anita Wijaya</h4>
+                            <p class="text-gray-500 text-sm">Pemilik UMKM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Branding yang dibuat Solusietam untuk usaha kue saya sangat membantu meningkatkan penjualan. Desain logo dan kemasannya membuat produk saya terlihat lebih premium."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Rudi Hartono</h4>
+                            <p class="text-gray-500 text-sm">Direktur Perusahaan</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Konsultasi IT dari SolusiEtam membantu perusahaan kami mengembangkan sistem manajemen yang lebih efisien. Tim mereka sangat kompeten dan solutif."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-green-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Siap Menggunakan Layanan Kami?</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto opacity-90">Hubungi kami sekarang dan dapatkan solusi terbaik untuk kebutuhan Anda.</p>
+            <a href="https://wa.me/6285389571637?text=Halo%20Solusietam,%20saya%20ingin%20konsultasi%20tentang%20layanan%20anda" class="btn-outline border-white text-white hover:bg-white hover:text-green-700 px-8 py-3 rounded-full font-medium inline-block" target="_blank">
+                <i class="fab fa-whatsapp mr-2"></i> Hubungi via WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Silakan hubungi kami untuk informasi lebih lanjut atau pemesanan layanan</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Kirim Pesan</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 mb-2">Nama Lengkap</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="phone" class="block text-gray-700 mb-2">Nomor Telepon</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="service" class="block text-gray-700 mb-2">Layanan yang Dibutuhkan</label>
+                                <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option value="">Pilih Layanan</option>
+                                    <option value="ac">Bersih AC</option>
+                                    <option value="it">Konsultasi IT</option>
+                                    <option value="design">Desain Grafis</option>
+                                    <option value="branding">Branding UMKM</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 mb-2">Pesan</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full py-3 rounded-full font-medium">Kirim Pesan</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-md h-full">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Informasi Kontak</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fas fa-map-marker-alt text-green-600"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-800">Alamat</h4>
+                                    <p class="text-gray-600">Jl. Profesional No. 123, Jakarta Selatan, Indonesia</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fas fa-phone-alt text-green-600"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-800">Telepon</h4>
+                                    <p class="text-gray-600">+62 21 1234 5678</p>
+                                    <p class="text-gray-600">+62 812 3456 7890 (WhatsApp)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fas fa-envelope text-green-600"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-800">Email</h4>
+                                    <p class="text-gray-600">info@greensolution.id</p>
+                                    <p class="text-gray-600">cs@greensolution.id</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fas fa-clock text-green-600"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-800">Jam Operasional</h4>
+                                    <p class="text-gray-600">Senin - Jumat: 08.00 - 17.00 WIB</p>
+                                    <p class="text-gray-600">Sabtu: 08.00 - 15.00 WIB</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-medium text-gray-800 mb-4">Ikuti Kami</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-colors">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-colors">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-colors">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+                            <i class="fas fa-leaf text-white text-xl"></i>
+                        </div>
+                        <a href="#" class="text-2xl font-bold text-white">Solusi<span class="text-green-400">Etam</span></a>
+                    </div>
+                    <p class="text-gray-400">Solusi profesional untuk semua kebutuhan rumah dan bisnis Anda.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Layanan</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors">Bersih AC</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors">Konsultasi IT</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors">Desain Grafis</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors">Branding UMKM</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-green-400 transition-colors">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-green-400 transition-colors">Layanan</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-green-400 transition-colors">Tentang Kami</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-green-400 transition-colors">Testimoni</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-green-400 transition-colors">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Berlangganan newsletter kami untuk mendapatkan informasi terbaru dan penawaran spesial.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Email Anda" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-r-lg transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 GreenSolution. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Form submission (example)
+        const contactForm = document.querySelector('#contact form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Terima kasih! Pesan Anda telah kami terima. Kami akan segera menghubungi Anda.');
+                this.reset();
+            });
+        }
+    </script>
+       <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Slider Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('slider');
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-slide');
+            const nextBtn = document.getElementById('next-slide');
+            const sliderNav = document.getElementById('slider-nav');
+            
+            let currentIndex = 0;
+            const slideCount = slides.length;
+            
+            // Create navigation dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('slider-dot');
+                if (index === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+                sliderNav.appendChild(dot);
+            });
+            
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            // Function to go to specific slide
+            function goToSlide(index) {
+                if (index < 0) index = slideCount - 1;
+                else if (index >= slideCount) index = 0;
+                
+                currentIndex = index;
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update active dot
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+            
+            // Next and previous buttons
+            prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+            nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+            
+            // Auto slide
+            let slideInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
+            
+            // Pause on hover
+            slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            slider.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
+            });
+            
+            // Touch events for mobile swipe
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            slider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                clearInterval(slideInterval);
+            }, {passive: true});
+            
+            slider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                slideInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
+            }, {passive: true});
+            
+            function handleSwipe() {
+                const threshold = 50;
+                if (touchStartX - touchEndX > threshold) {
+                    // Swipe left - next slide
+                    goToSlide(currentIndex + 1);
+                } else if (touchEndX - touchStartX > threshold) {
+                    // Swipe right - previous slide
+                    goToSlide(currentIndex - 1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
